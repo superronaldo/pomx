@@ -272,13 +272,14 @@ export function useChartPrices(chainId, symbol, isStable, period, currentAverage
   let { data: prices, mutate: updatePrices } = useSWR(swrKey, {
     fetcher: async (...args) => {
       try {
-        // return await getChartPricesFromStats(chainId, symbol, period);
-        if (symbol === "MATIC") {
-          return await getChartPricesFromAPI(chainId, symbol, period);
-        }
-        else {
-          return await getChartPricesFromStats(43114, symbol, period);
-        }
+        // if (symbol === "MATIC") {
+        //   return await getChartPricesFromAPI(chainId, symbol, period);
+        // }
+        // else {
+        //   return await getChartPricesFromStats(43114, symbol, period);
+        // }
+        return await getChartPricesFromAPI(chainId, symbol, period);
+
       } catch (ex) {
         console.warn(ex);
         console.warn("Switching to graph chainlink data");
