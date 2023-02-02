@@ -214,12 +214,71 @@ function getChainlinkChartPricesFromGraph(tokenSymbol, period) {
     });
 }
 
+
+async function getChartPricesFromAPI(chainId, symbol, period) {
+  const url = `https://api.binance.com/api/v3/klines?symbol=${symbol}USDT&interval=${period}`;
+
+  const TIMEOUT = 5000;
+  const res = await new Promise(async (resolve, reject) => {
+    let done = false;
+    setTimeout(() => {
+      done = true;
+      reject(new Error(`request timeout ${url}`));
+    }, TIMEOUT);
+
+    let lastEx;
+    for (let i = 0; i < 3; i++) {
+      if (done) return;
+      try {
+        const res = await fetch(url);
+        resolve(res);
+        return;
+      } catch (ex) {
+        await sleep(300);
+        lastEx = ex;
+      }
+    }
+    reject(lastEx);
+  });
+  if (!res.ok) {
+    throw new Error(`request failed ${res.status} ${res.statusText}`);
+  }
+  const prices = await res.json();
+  if (!prices || prices.length < 10) {
+    throw new Error(`not enough prices data: ${prices?.length}`);
+  }
+
+  let priceMap = [];
+  prices.forEach(element => {
+    priceMap.push(
+      {
+        time: element[0] / 1000 + timezoneOffset,
+        open: parseFloat(element[1], 2),
+        close: parseFloat(element[4], 2),
+        high: parseFloat(element[2], 2),
+        low: parseFloat(element[3], 2),
+      }
+    );
+  });
+
+  return priceMap;
+}
+
+
+
+
 export function useChartPrices(chainId, symbol, isStable, period, currentAveragePrice) {
   const swrKey = !isStable && symbol ? ["getChartCandles", chainId, symbol, period] : null;
   let { data: prices, mutate: updatePrices } = useSWR(swrKey, {
     fetcher: async (...args) => {
       try {
-        return await getChartPricesFromStats(chainId, symbol, period);
+        // return await getChartPricesFromStats(chainId, symbol, period);
+        if (symbol === "MATIC") {
+          return await getChartPricesFromAPI(chainId, symbol, period);
+        }
+        else {
+          return await getChartPricesFromStats(43114, symbol, period);
+        }
       } catch (ex) {
         console.warn(ex);
         console.warn("Switching to graph chainlink data");

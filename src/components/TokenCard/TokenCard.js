@@ -75,10 +75,10 @@ export default function TokenCard({ showRedirectModal, redirectPopupTimestamp })
           </div>
           <div className="Home-token-card-option-action">
             <div className="buy">
-              {/* <BuyLink to="/buy_mmx" className="default-btn" network={ARBITRUM}>
+              {/* <BuyLink to="/buy_pomx" className="default-btn" network={ARBITRUM}>
                 <Trans>Buy on Arbitrum</Trans>
               </BuyLink> */}
-              <BuyLink to="/buy_mmx" className="default-btn" network={AVALANCHE}>
+              <BuyLink to="/buy_pomx" className="default-btn" network={AVALANCHE}>
                 <Trans>Buy</Trans>
               </BuyLink>
             </div>
@@ -102,10 +102,10 @@ export default function TokenCard({ showRedirectModal, redirectPopupTimestamp })
           </div>
           <div className="Home-token-card-option-action">
             <div className="buy">
-              {/* <BuyLink to="/buy_mlp" className="default-btn" network={ARBITRUM}>
+              {/* <BuyLink to="/buy_polp" className="default-btn" network={ARBITRUM}>
                 <Trans>Buy on Arbitrum</Trans>
               </BuyLink> */}
-              <BuyLink to="/buy_mlp" className="default-btn" network={AVALANCHE}>
+              <BuyLink to="/buy_polp" className="default-btn" network={AVALANCHE}>
                 <Trans>Buy</Trans>
               </BuyLink>
             </div>

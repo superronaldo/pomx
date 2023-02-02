@@ -39,7 +39,7 @@ export default function Home({ showRedirectModal, redirectPopupTimestamp }) {
   // }, {
   //   id: 3,
   //   question: "What is the POLP Token? ",
-  //   answer: "The POLP token represents the liquidity users provide to the POMX platform for Swaps and Margin Trading.<br><br>To provide liquidity to POLP you <a href='https://gmx.io/buy_mlp' target='_blank'>trade</a> your crypto asset BTC, ETH, LINK, UNI, USDC, USDT, MIM, or FRAX to the liquidity pool, in exchange, you gain exposure to a diversified index of tokens while earning 50% of the platform trading fees and esPMX."
+  //   answer: "The POLP token represents the liquidity users provide to the POMX platform for Swaps and Margin Trading.<br><br>To provide liquidity to POLP you <a href='https://gmx.io/buy_polp' target='_blank'>trade</a> your crypto asset BTC, ETH, LINK, UNI, USDC, USDT, MIM, or FRAX to the liquidity pool, in exchange, you gain exposure to a diversified index of tokens while earning 50% of the platform trading fees and esPMX."
   // }, {
   //   id: 4,
   //   question: "What can I trade on GMX? ",

@@ -1718,7 +1718,7 @@ export default function StakeV2({ setPendingTxns, connectWallet }) {
               </div>
               <div className="App-card-divider" />
               <div className="App-card-options">
-                <Link className="App-button-option App-card-option" to="/buy_mmx">
+                <Link className="App-button-option App-card-option" to="/buy_pomx">
                   <Trans>Buy POMX</Trans>
                 </Link>
                 {active && (
@@ -1958,10 +1958,10 @@ export default function StakeV2({ setPendingTxns, connectWallet }) {
               </div>
               <div className="App-card-divider"></div>
               <div className="App-card-options">
-                <Link className="App-button-option App-card-option" to="/buy_mlp">
+                <Link className="App-button-option App-card-option" to="/buy_polp">
                   <Trans>Buy POLP</Trans>
                 </Link>
-                <Link className="App-button-option App-card-option" to="/buy_mlp#redeem">
+                <Link className="App-button-option App-card-option" to="/buy_polp#redeem">
                   <Trans>Sell POLP</Trans>
                 </Link>
                 {/* {hasInsurance && (
